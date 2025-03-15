@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import animationData from "../../../public/signinLottie.json"; // Replace with your Lottie JSON file
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialLogin from "../../shared/SocialLogin";
 
 const SignIn = () => {
   const { signIn } = useContext(AuthContext);
@@ -79,6 +80,7 @@ const SignIn = () => {
               </button>
             </motion.div>
           </form>
+          <SocialLogin />
         </motion.div>
       </div>
     </div>

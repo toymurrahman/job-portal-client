@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import animationData from "../../../public/Animation - 1741686641675.json"; // Replace with your Lottie JSON file
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import SocialLogin from "../../shared/SocialLogin";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -62,29 +63,19 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Full Name"
-                
-            
+                placeholder="Full Name"            
                 className="input input-bordered w-full"
-              />
-           
-           
+              />        
               <input
                 type="email"
                 name="email"
-                placeholder="Email"
-               
-         
+                placeholder="Email"     
                 className="input input-bordered w-full"
-              />
-         
-           
+              />           
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
-                
-      
                 className="input input-bordered w-full"
               />
            
@@ -94,6 +85,10 @@ const Register = () => {
               </button>
             </motion.div>
           </form>
+          
+          <div>
+            <SocialLogin />
+          </div>
         </motion.div>
       </div>
     </div>
