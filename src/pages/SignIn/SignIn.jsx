@@ -4,9 +4,14 @@ import animationData from "../../../public/signinLottie.json"; // Replace with y
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const { signIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const forme = location?.state || '/';
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,7 +22,8 @@ const SignIn = () => {
 
     signIn(email, password)
       .then((user) => {
-        console.log(user);
+        console.log(user)
+        navigate(forme)
       })
       .catch((error) => {
         console.log(error.message);
