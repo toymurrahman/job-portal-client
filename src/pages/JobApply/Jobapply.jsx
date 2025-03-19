@@ -24,8 +24,26 @@ const Jobapply = () => {
     const coverLetter = formData.coverLetter.value;
     const resume = formData.resume.files[0];
 
+    const jobApplication = {
+        job_id: id,
+        applicant_email: user.email,
+        github,
+        linkedin,
+        coverLetter,
+        resume,
+    }
 
-
+    // Simulate API call to submit application
+    fetch('http://localhost:3000/job-applications', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(jobApplication),
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
 
     console.log("Application Submitted:", github, linkedin, coverLetter, resume);
   };
