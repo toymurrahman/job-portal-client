@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import animationData from "../../assets/submit.json";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Jobapply = () => {
  
   const {id} = useParams();
   const {user} = useAuth();
+  
   console.log(id, user);
   const [submitted, setSubmitted] = useState(false);
 
@@ -42,7 +43,10 @@ const Jobapply = () => {
       body: JSON.stringify(jobApplication),
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data);
+      
+    })
     .catch(err => console.log(err))
 
     console.log("Application Submitted:", github, linkedin, coverLetter, resume);
@@ -64,6 +68,31 @@ const Jobapply = () => {
             <p className="text-gray-600">
               We will review your application and get back to you soon.
             </p>
+            <div className="mt-6 flex gap-4 justify-center">
+
+            <div className="mb-4">
+             <Link to={'/myApplications'}>
+             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <button type="submit" className="btn btn-success w-full btn-lg text-white ">
+                 View applictions
+                </button>
+              </motion.div>
+             </Link>
+            </div>
+
+            <div >
+             <Link to={'/'}>
+             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <button type="submit" className="btn btn-success w-full btn-lg text-white">
+                  Apply More
+                </button>
+              </motion.div>
+             </Link>
+            </div>
+
+
+
+            </div>
           </div>
         ) : (
           <>
@@ -90,7 +119,7 @@ const Jobapply = () => {
                 accept=".pdf,.docx"
                 name="resume"
                 className="file-input file-input-bordered w-full"
-                required
+                
               />
               <textarea
                 name="coverLetter"
