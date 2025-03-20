@@ -29,8 +29,8 @@ const MyApplictions = () => {
             </tr>
           </thead>
           <tbody>
-            {jobs.map((jobs) => 
-              <tr>
+            {jobs.map((jobs , index) => 
+              <tr key={index}>
                 <th>
                   <label>
                     <input type="checkbox" className="checkbox" />

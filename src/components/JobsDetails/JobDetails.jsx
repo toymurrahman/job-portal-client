@@ -26,7 +26,7 @@ const JobDetails = () => {
     description,
     applicationDeadline,
   } = job;
-  console.log(job);
+  
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center p-6">
       <div className="w-full max-w-6xl">
