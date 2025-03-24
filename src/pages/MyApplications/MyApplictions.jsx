@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import axios from "axios";
 
 const MyApplictions = () => {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/job-applications?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setJobs(data))
+    // fetch(`http://localhost:3000/job-applications?email=${user.email}`)
+    //   .then((res) => res.json())
+    //   .then((data) => setJobs(data))
+    //   .catch((err) => console.log(err));
+    axios
+      .get(`http://localhost:3000/job-applications?email=${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        setJobs(res.data);
+      })
       .catch((err) => console.log(err));
   }, [user.email]);
   return (
@@ -29,7 +38,7 @@ const MyApplictions = () => {
             </tr>
           </thead>
           <tbody>
-            {jobs.map((jobs , index) => 
+            {jobs.map((jobs, index) => (
               <tr key={index}>
                 <th>
                   <label>
@@ -40,9 +49,7 @@ const MyApplictions = () => {
                   <div className="flex items-center gap-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img
-                          src={jobs.company_logo}
-                        />
+                        <img src={jobs.company_logo} />
                       </div>
                     </div>
                     <div>
@@ -51,7 +58,7 @@ const MyApplictions = () => {
                     </div>
                   </div>
                 </td>
-               
+
                 <td>{jobs.title}</td>
                 <td>
                   {jobs.salaryRange.min} - {jobs.salaryRange.max} BDT
@@ -60,7 +67,7 @@ const MyApplictions = () => {
                   <button className="btn btn-ghost btn-xs">details</button>
                 </th>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>
