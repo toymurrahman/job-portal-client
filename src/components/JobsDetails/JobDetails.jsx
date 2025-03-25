@@ -18,7 +18,6 @@ const JobDetails = () => {
     responsibilities,
     location,
     jobType,
-    category,
     company,
     requirements,
     company_logo,

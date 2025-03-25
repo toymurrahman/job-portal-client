@@ -4,7 +4,6 @@ import HotJobsCard from "./HotJobsCard";
 const HotJobs = () => {
   const [jobs, setJobs] = useState([]);
 
-  // Fetching data from API
   useEffect(() => {
     fetch("http://localhost:3000/jobs")
       .then((response) => response.json())

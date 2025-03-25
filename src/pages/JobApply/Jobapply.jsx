@@ -13,9 +13,6 @@ const Jobapply = () => {
   console.log(id, user);
   const [submitted, setSubmitted] = useState(false);
 
-  
-
- 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -33,8 +30,6 @@ const Jobapply = () => {
         coverLetter,
         resume,
     }
-
-    // Simulate API call to submit application
     fetch('http://localhost:3000/job-applications', {
       method: 'POST',
       headers: {

@@ -3,14 +3,11 @@ import { useLoaderData } from "react-router-dom";
 
 const ViewApplications = () => {
   const Application = useLoaderData();
-  console.log(Application);
-
   return (
     <div>
       <h2>View: {Application.length} </h2>
       <div className="overflow-x-auto">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th></th>
@@ -28,7 +25,6 @@ const ViewApplications = () => {
                 <td>{application.favoriteColor}</td>
               </tr>
             ))}
-        
           </tbody>
         </table>
       </div>

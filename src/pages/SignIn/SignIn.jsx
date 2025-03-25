@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { motion } from "framer-motion";
-import animationData from "../../../public/signinLottie.json"; // Replace with your Lottie JSON file
+import animationData from "../../../public/signinLottie.json"; 
 import Lottie from "lottie-react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import SocialLogin from "../../shared/SocialLogin";
@@ -12,7 +12,7 @@ const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const forme = location?.state || '/';
+  const forme = location?.state || "/";
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,12 +23,13 @@ const SignIn = () => {
 
     signIn(email, password)
       .then((res) => {
-        console.log(res.user.email)
-        const user = {email: res.user.email}
-        axios.post('http://localhost:3000/jwt', user, {withCredentials: true})
-        .then(res => {
-          console.log(res.data);
-        })
+        console.log(res.user.email);
+        const user = { email: res.user.email };
+        axios
+          .post("http://localhost:3000/jwt", user, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
         // navigate(forme)
       })
       .catch((error) => {
@@ -37,7 +38,6 @@ const SignIn = () => {
   };
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4 relative overflow-hidden">
-      {/* Background Graphics */}
       <motion.div
         className="absolute top-0 left-0 w-64 h-64 bg-green-300 opacity-30 rounded-full"
         animate={{ scale: [1, 1.5, 1] }}
@@ -49,10 +49,7 @@ const SignIn = () => {
         animate={{ scale: [1, 1.5, 1] }}
         transition={{ repeat: Infinity, duration: 6 }}
       ></motion.div>
-
-      {/* Flex container for both Lottie animation and form */}
       <div className="flex flex-row-reverse items-center justify-between w-full max-w-screen-lg relative z-10">
-        {/* Lottie animation */}
         <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
           <Lottie
             animationData={animationData}
@@ -61,7 +58,6 @@ const SignIn = () => {
           />
         </div>
 
-        {/* Form Section */}
         <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
