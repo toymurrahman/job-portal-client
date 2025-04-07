@@ -9,12 +9,12 @@ import {
   signOut,
 } from "firebase/auth";
 import auth from "./../../Firebase/firebase.init";
+import axios from "axios";
 
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -31,16 +31,39 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-    const googleSignIn = () => {
+  const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
-    }
-
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios
+          .post("http://localhost:3000/jwt", user, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log("login token", data.data);
+            setLoading(false);
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:3000/logout",
+            {},
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log("Logout token", res.data);
+            setLoading(false);
+          });
+      }
     });
     return () => {
       unsubscribe();
@@ -55,7 +78,7 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     setUser,
     setLoading,
-    googleSignIn
+    googleSignIn,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
