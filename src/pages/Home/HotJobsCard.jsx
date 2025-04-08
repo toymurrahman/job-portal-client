@@ -33,7 +33,7 @@ const HotJobsCard = ({ job }) => {
       <div className="flex flex-wrap gap-2 ml-5">
         <span className="badge badge-dash badge-primary"> {jobType} </span>
         <span className="badge badge-dash badge-accent"> {category} </span>
-        <span className="badge badge-dash badge-secondary"> {status} </span>
+      
       </div>
       <div className="card-body">
         <h2 className="card-title">  {title} </h2>

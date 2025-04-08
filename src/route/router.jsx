@@ -28,12 +28,12 @@ import ViewApplications from "../pages/ViewAppications/ViewApplications";
         {
           path: '/jobs/:id',
           element: <PrivateRoute> <JobDetails /> </PrivateRoute> ,
-          loader: ({params}) => fetch(`http://localhost:3000/jobs/${params.id}`)
+          loader: ({params}) => fetch(`https://server-job-portal.vercel.app/jobs/${params.id}`)
         },
         {
           path: '/JobApply/:id',
           element: <PrivateRoute> <Jobapply/> </PrivateRoute> ,
-          // loader: ({params}) => fetch(`http://localhost:3000/JobApply/${params.id}`)
+          // loader: ({params}) => fetch(`https://server-job-portal.vercel.app/JobApply/${params.id}`)
         },
         {
           path: '/myApplications',
@@ -50,7 +50,7 @@ import ViewApplications from "../pages/ViewAppications/ViewApplications";
         {
           path:"/viewApplications/:job_id",
           element: <PrivateRoute> <ViewApplications/> </PrivateRoute> ,
-          loader: ({params}) => fetch(`http://localhost:3000/job-applications/jobs/${params.job_id}`) 
+          loader: ({params}) => fetch(`https://server-job-portal.vercel.app/job-applications/jobs/${params.job_id}`) 
         },
         {
             path: "/register",

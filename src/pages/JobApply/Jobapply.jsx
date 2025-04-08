@@ -30,7 +30,7 @@ const Jobapply = () => {
         coverLetter,
         resume,
     }
-    fetch('http://localhost:3000/job-applications', {
+    fetch('https://server-job-portal.vercel.app/job-applications', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

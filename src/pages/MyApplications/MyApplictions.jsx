@@ -10,7 +10,7 @@ const MyApplictions = () => {
 
   useEffect(() => {
     axios
-      // .get(`http://localhost:3000/job-applications?email=${user.email}`, {
+      // .get(`https://server-job-portal.vercel.app/job-applications?email=${user.email}`, {
       //   withCredentials: true,
       // })
       axiosSecure.get(`/job-applications?email=${user.email}`)
