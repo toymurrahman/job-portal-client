@@ -13,6 +13,8 @@ import MyApplictions from "../pages/MyApplications/MyApplictions";
 import Addjobs from "../pages/AddJobs/Addjobs";
 import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewAppications/ViewApplications";
+import ProductCard from "../pages/Products/ProductCard";
+import Shop from "../pages/Products/Shop";
 
 
   const router = createBrowserRouter([
@@ -59,6 +61,10 @@ import ViewApplications from "../pages/ViewAppications/ViewApplications";
         {
             path: "/signin",
             element: <SignIn />,
+        },
+        {
+            path: "/products",
+            element: <Shop />,
         }
       ]
     },
