@@ -65,6 +65,7 @@ import Shop from "../pages/Products/Shop";
         {
             path: "/products",
             element: <Shop />,
+            loader: () => fetch("http://localhost:3000/productsCount")
         }
       ]
     },
