@@ -18,19 +18,57 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myApplications">My Applications</NavLink>
-      </li>
-      <li>
-        <NavLink to="/addJobs">Add Jobs</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myPostedJobs">My Posts</NavLink>
-      </li>
-    </>
+    <li>
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "btn btn-active btn-primary btn-sm" : "text-base"
+        }
+      >
+        Home
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/jobs"
+        className={({ isActive }) =>
+          isActive ? "btn btn-active btn-primary btn-sm" : "text-base"
+        }
+      >
+        Jobs
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/myApplications"
+        className={({ isActive }) =>
+          isActive ? "btn btn-active btn-primary btn-sm" : "text-base"
+        }
+      >
+        My Applications
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/addJobs"
+        className={({ isActive }) =>
+          isActive ? "btn btn-active btn-primary btn-sm" : "text-base"
+        }
+      >
+        Add Jobs
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/myPostedJobs"
+        className={({ isActive }) =>
+          isActive ? "btn btn-active btn-primary btn-sm" : "text-base"
+        }
+      >
+        My Posts
+      </NavLink>
+    </li>
+  </>
   );
 
   return (

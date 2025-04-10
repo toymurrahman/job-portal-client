@@ -15,6 +15,7 @@ import MyPostedJobs from "../pages/MyPostedJobs/MyPostedJobs";
 import ViewApplications from "../pages/ViewAppications/ViewApplications";
 import ProductCard from "../pages/Products/ProductCard";
 import Shop from "../pages/Products/Shop";
+import Alljob from "../pages/AllJobs/Alljob";
 
 
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ import Shop from "../pages/Products/Shop";
         {
             path: "/",
             element: <Home />,
+        },
+        {
+            path: "/jobs",
+            element: <Alljob />,
         },
         {
           path: '/jobs/:id',
